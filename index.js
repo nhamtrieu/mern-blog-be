@@ -32,11 +32,6 @@ app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/post", postRoute);
 app.use("/api/v1/comment", commentRoute);
 
-app.use(express.static(path.join(__dirname, "front-end/dist")));
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "front-end/dist", "index.html"));
-});
-
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
     const message = err.message || "Internal server error";
